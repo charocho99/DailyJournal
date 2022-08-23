@@ -1,0 +1,15 @@
+<%- include('partials/header'); -%>
+    <% posts.forEach(function(post){ %> 
+        <h2><%=post.title %> </h2>
+        <% if(post.content.length<=100){ %> 
+            <p><%= post.content %>  </p>
+        <% }else{ %> 
+            <p><%= post.content.slice(0,97)+"..." %><a href="/posts/<%= post._id %> ">Read More.</a> </p>
+        <% } %> 
+        
+        <form action="/update" method="post">
+            <button class="btn btn-danger" type="submit" name="updateButton" value="<%= post._id %>">Delete</button>
+        </form>
+        
+    <% }) %> 
+<%- include('partials/footer'); -%>
